@@ -23,7 +23,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '90-linux.hook')
 md5sums=('f91bfe133d2cb1692f705947282e123a'
          '702a69746536f24fd5ebde90eed26048'
-         '00000000000000000000000000000000'
+         '780b011164e93c9b4fcb90e67d425ee3'
          '417932cd6167ff0b47c6dc297e3eb3fb'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
