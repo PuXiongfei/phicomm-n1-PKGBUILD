@@ -14,7 +14,7 @@ install=$pkgname.install
 makedepends=('git' 'bc')
 backup=('boot/boot.txt' 'boot/boot.scr')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
-        "https://github.com/PuXiongfei/phicomm-n1-u-boot/archive/refs/tags/v${pkgver}.tar.gz"
+        "phicomm-n1-${pkgver}.patch"
         'aml_autoscript.txt'
         'emmc_autoscript.txt'
         's905_autoscript.txt'
@@ -22,13 +22,28 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
         'boot.txt'
         'mkscr')
 md5sums=('b41850031d6e1cbc14f973e085469154'
-         '9751b68066103cfb37ebd7eff6b2c7c9'
+         '00000000000000000000000000000000'
          'fac80dcdfc4c1cdddec46aa274cd8406'
          '19c9db74781f1499caec2b65fbc26e5a'
          'a497e21f888a571a10d3d111b033ad23'
          '69c51bbf25f190e90254f28bb495dd69'
          '4258258571f02d00d4b38d03b563dc2b'
          '021623a04afd29ac3f368977140cfbfd')
+
+prepare() {
+  git apply "${srcdir}"/config/"phicomm-n1-${pkgver}".patch
+}
+
+build() {
+  cd u-boot-${pkgver}
+
+  unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
+
+  make distclean
+  make phicomm-n1_defconfig
+  echo 'CONFIG_IDENT_STRING=" Arch Linux ARM"' >> .config
+  make -j1 EXTRAVERSION=-${pkgrel}
+}
 
 package() {
   install -d "${pkgdir}"/boot
