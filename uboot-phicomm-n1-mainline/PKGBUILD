@@ -22,7 +22,7 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
         'mkscr')
 md5sums=('b41850031d6e1cbc14f973e085469154'
-         '00000000000000000000000000000000'
+         '9e7fd9edf37a90a3c33d33fefc91375a'
          'fac80dcdfc4c1cdddec46aa274cd8406'
          '19c9db74781f1499caec2b65fbc26e5a'
          'a497e21f888a571a10d3d111b033ad23'
