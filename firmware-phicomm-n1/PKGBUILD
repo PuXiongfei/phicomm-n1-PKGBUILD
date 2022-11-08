@@ -16,7 +16,7 @@ source=("git+https://github.com/RPi-Distro/firmware-nonfree.git#commit=$_firmcom
         "BCM4345C0.hcd::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM4345C0.hcd")
 
 sha256sums=('SKIP'
-            'c723c903655086c9f3a1de94a291f495a0f087f1ee6d3ee7bc4c558497aae7bc')
+            '8b3ef20cc40f4cad64f7acd98f9e9d4e5401252836f190388aa5c9c0b7e30648')
 
 package() {
   _FWPATH=firmware-nonfree/debian/config/brcm80211
