@@ -14,7 +14,7 @@ install=$pkgname.install
 makedepends=('git' 'bc')
 backup=('boot/boot.txt' 'boot/boot.scr')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
-        "https://github.com/PuXiongfei/phicomm-n1-u-boot/releases/download/${pkgver}/u-boot.bin"
+        "https://github.com/PuXiongfei/phicomm-n1-u-boot/archive/refs/tags/v${pkgver}.tar.gz"
         'aml_autoscript.txt'
         'emmc_autoscript.txt'
         's905_autoscript.txt'
@@ -37,5 +37,5 @@ package() {
   u-boot-${pkgver}/tools/mkimage -A arm -O linux -T script -C none -n "s905_autoscript" -d s905_autoscript.txt "${pkgdir}"/boot/s905_autoscript
   u-boot-${pkgver}/tools/mkimage -A arm -O linux -T script -C none -n "env_default" -d env_default.txt "${pkgdir}"/boot/env_default
   u-boot-${pkgver}/tools/mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt "${pkgdir}"/boot/boot.scr
-  cp boot.txt mkscr u-boot.bin "${pkgdir}"/boot
+  cp boot.txt mkscr phicomm-n1-u-boot-${pkgver}.tar.gz/u-boot.bin "${pkgdir}"/boot
 }
