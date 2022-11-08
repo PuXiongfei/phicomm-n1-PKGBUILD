@@ -1,0 +1,34 @@
+# Maintainer: Pu Xiongfei <pu.xiongfei@qq.com>
+
+pkgname=firmware-phicomm-n1
+_firmcommit=8295cb71155909480d427d5dbdb230fac593e84d
+_bluezcommit=90d0bdffd25cc8a1717d3fec6cc7bbde56ee83c7
+pkgver=20221101
+pkgrel=1
+pkgdesc="Additional firmware for phicomm-n1"
+arch=('any')
+url="https://github.com/RPi-Distro/firmware-nonfree"
+license=('custom')
+makedepends=('git')
+options=('!strip')
+source=("git+https://github.com/RPi-Distro/firmware-nonfree.git#commit=$_firmcommit"
+        # bluetooth for phicomm-n1
+        "BCM4345C0.hcd::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM4345C0.hcd")
+
+sha256sums=('SKIP'
+            'c723c903655086c9f3a1de94a291f495a0f087f1ee6d3ee7bc4c558497aae7bc')
+
+package() {
+  _FWPATH=firmware-nonfree/debian/config/brcm80211
+
+  install -d "$pkgdir"/usr/lib/firmware/updates/brcm
+  install -m 0644 "$srcdir/$_FWPATH"/cypress/cyfmac43455-sdio-standard.bin "$pkgdir"/usr/lib/firmware/updates/brcm/brcmfmac43455-sdio.bin
+  install -m 0644 "$srcdir/$_FWPATH"/cypress/cyfmac43455-sdio.clm_blob "$pkgdir"/usr/lib/firmware/updates/brcm/brcmfmac43455-sdio.clm_blob
+  install -m 0644 "$srcdir/$_FWPATH"/brcm/brcmfmac43455-sdio.txt "$pkgdir"/usr/lib/firmware/updates/brcm/brcmfmac43455-sdio.txt
+  install -m 0644 BCM4345C0.hcd "$pkgdir"/usr/lib/firmware/updates/brcm/BCM4345C0.hcd
+
+  # make some symbolic links
+  cd "$pkgdir"/usr/lib/firmware/updates/brcm
+  ln -s brcmfmac43455-sdio.bin brcmfmac43455-sdio.phicomm,n1.bin
+  ln -s brcmfmac43455-sdio.txt brcmfmac43455-sdio.phicomm,n1.txt
+}
