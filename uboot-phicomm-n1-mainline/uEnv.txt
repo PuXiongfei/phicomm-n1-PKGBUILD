@@ -1,0 +1,1 @@
+extraargs="verbosity=1 splash=verbose"
