@@ -12,7 +12,7 @@ url='http://www.denx.de/wiki/U-Boot/WebHome'
 license=('GPL')
 install=$pkgname.install
 makedepends=('git' 'bc')
-backup=('boot/boot.txt' 'boot/boot.scr')
+backup=('boot/uEnv.txt')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         "meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch"
         'aml_autoscript.txt'
@@ -55,5 +55,5 @@ package() {
   u-boot-${pkgver/rc/-rc}/tools/mkimage -A arm -O linux -T script -C none -n "s905_autoscript" -d s905_autoscript.txt "${pkgdir}"/boot/s905_autoscript
   u-boot-${pkgver/rc/-rc}/tools/mkimage -A arm -O linux -T script -C none -n "env_default" -d env_default.txt "${pkgdir}"/boot/env_default
   u-boot-${pkgver/rc/-rc}/tools/mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d boot.txt "${pkgdir}"/boot/boot.scr
-  cp boot.txt mkscr u-boot-${pkgver/rc/-rc}/u-boot.bin "${pkgdir}"/boot
+  cp boot.txt mkscr u-boot-${pkgver/rc/-rc}/u-boot.bin uEnv.txt"${pkgdir}"/boot
 }
