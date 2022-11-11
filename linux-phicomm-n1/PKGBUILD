@@ -7,7 +7,7 @@ pkgbase=linux-phicomm-n1
 _srcname=linux-6.0
 _kernelname=${pkgbase#linux}
 _desc="AArch64 phicomm-n1"
-pkgver=6.0.7
+pkgver=6.0.8
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 md5sums=('d681bd1d62d48049a4874646f6774d92'
          '563ee75865b377496172e408ed7eed60'
          'fb676661d2019fff48e9cb528bedace2'
-         '6c5459aa4cc277f63270afcb79d80b26'
+         '417932cd6167ff0b47c6dc297e3eb3fb'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '3dc88030a8f2f5a5f97266d99b149f77')
@@ -61,7 +61,7 @@ build() {
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
   make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 
-  cat ./.config > "${srcdir}/config"
+  # cat ./.config > "${srcdir}/config"
 }
 
 _package() {
