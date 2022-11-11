@@ -10,7 +10,7 @@ setenv bootcmd_mmc1 'devnum=1; run mmc_boot'
 setenv usb_boot 'usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot; fi'
 setenv mmc_boot 'if mmc dev ${devnum}; then devtype=mmc; run scan_dev_for_boot; fi'
 setenv scan_dev_for_boot 'echo Scanning ${devtype} ${devnum}...; for prefix in ${boot_prefixes}; do run scan_dev_for_mainline; done'
-setenv scan_dev_for_mainline 'for loadtype in ${boot_loadtypes}; do if ${loadtype} ${devtype} ${devnum} ${loadaddr} ${prefix}u-boot.bin; then echo Found mainline U-Boot ${prefix}u-boot.bin; go ${loadaddr}; fi; done'
+setenv scan_dev_for_mainline 'for loadtype in ${boot_loadtypes}; do if ${loadtype} ${devtype} ${devnum} 0x01000000 ${prefix}u-boot.bin; then echo Found mainline U-Boot ${prefix}u-boot.bin; go 0x01000000; fi; done'
 setenv upgrade_step 2
 saveenv
 sleep 1
