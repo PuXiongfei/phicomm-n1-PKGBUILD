@@ -16,15 +16,15 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+        'config::https://github.com/armbian/build/raw/master/config/kernel/linux-meson64-edge.config'
         'meson-gxl-s905d-phicomm-n1-dts.patch'
-        'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('d681bd1d62d48049a4874646f6774d92'
          '30d096c0789849e4c2a7f86c729bb070'
-         'fb676661d2019fff48e9cb528bedace2'
          '417932cd6167ff0b47c6dc297e3eb3fb'
+         'fb676661d2019fff48e9cb528bedace2'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '3dc88030a8f2f5a5f97266d99b149f77')
