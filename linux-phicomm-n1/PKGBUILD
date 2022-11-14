@@ -4,18 +4,18 @@
 buildarch=8
 
 pkgbase=linux-phicomm-n1
-_srcname=linux-6.0
+_srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 phicomm-n1"
-pkgver=6.0.8
+pkgver=5.19.8
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config::https://github.com/archlinuxarm/PKGBUILDs/raw/master/core/linux-aarch64/config'
         'meson-gxl-s905d-phicomm-n1-dts.patch'
         'linux.preset'
