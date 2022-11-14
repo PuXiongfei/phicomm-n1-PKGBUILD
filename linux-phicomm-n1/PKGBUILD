@@ -16,7 +16,7 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
-        'config::https://github.com/armbian/build/raw/master/config/kernel/linux-meson64-edge.config'
+        'config::https://github.com/archlinuxarm/PKGBUILDs/raw/master/core/linux-aarch64/config'
         'meson-gxl-s905d-phicomm-n1-dts.patch'
         'linux.preset'
         '60-linux.hook'
