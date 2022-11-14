@@ -1,5 +1,5 @@
 diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-phicomm-n1.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-phicomm-n1.dts
-index 9ef210f17b4a..a8ede84c8abe 100644
+index 9ef210f17b4a..cc83c9c3d2c8 100644
 --- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-phicomm-n1.dts
 +++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905d-phicomm-n1.dts
 @@ -5,7 +5,10 @@
@@ -95,7 +95,7 @@ index 9ef210f17b4a..a8ede84c8abe 100644
 +
 +		interrupt-parent = <&gpio_intc>;
 +		/* MAC_INTR on GPIOZ_15 */
-+		interrupts = <25 IRQ_TYPE_LEVEL_LOW>;
++		interrupts = <29 IRQ_TYPE_LEVEL_LOW>;
 +	};
 +};
 +
