@@ -14,7 +14,6 @@ install=$pkgname.install
 makedepends=('git' 'bc')
 backup=('boot/uEnv.txt')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
-        'meson-gxl-s905d-phicomm-n1-dts.patch'
         "meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch"
         'aml_autoscript.txt'
         'env_default.txt'
@@ -22,7 +21,6 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'uEnv.txt'
         'mkscr')
 md5sums=('cb1f3774f5e423b91cff379101c764a3'
-         '00000000000000000000000000000000'
          '67ef7b5a7158223617953faf9345a374'
          'c76add3daf584ce122cf9111554a9b4f'
          '69c51bbf25f190e90254f28bb495dd69'
@@ -32,7 +30,6 @@ md5sums=('cb1f3774f5e423b91cff379101c764a3'
 
 prepare() {
   cd u-boot-${pkgver/rc/-rc}
-  patch -p1 -i ../meson-gxl-s905d-phicomm-n1-dts.patch
   patch -p1 -i ../meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch
 }
 
