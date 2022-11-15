@@ -21,7 +21,7 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'uEnv.txt'
         'mkscr')
 md5sums=('cb1f3774f5e423b91cff379101c764a3'
-         '67ef7b5a7158223617953faf9345a374'
+         'beb0d75b41019fb331bd7c402cfa4e37'
          'c76add3daf584ce122cf9111554a9b4f'
          '69c51bbf25f190e90254f28bb495dd69'
          'ffc564748d7b643235f2657e53bb8681'
