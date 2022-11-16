@@ -40,7 +40,7 @@ prepare() {
   # add upstream patch
   git apply --whitespace=nowarn ../patch-${pkgver}
 
-  git apply ${srcdir}/armbian_build/patch/kernel/$(cat ${srcdir}/armbian_build/patch/kernel/meson64-edge)/*
+  git apply ${srcdir}/armbian_build/patch/kernel/meson64-edge/*
   git apply ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch
 
   cat ${srcdir}/armbian_build/config/kernel/linux-meson64-edge.config > ./.config
