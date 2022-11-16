@@ -14,7 +14,7 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("${$_srcname}::http://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
+source=("${_srcname}::http://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
         'armbian_build::git+https://github.com/armbian/build.git'
         'meson-gxl-s905d-phicomm-n1-dts.patch'
         'linux.preset'
