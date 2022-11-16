@@ -14,13 +14,15 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("${_srcname}::http://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
+        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
         'armbian_build::git+https://github.com/armbian/build.git'
         'meson-gxl-s905d-phicomm-n1-dts.patch'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('f91bfe133d2cb1692f705947282e123a'
+md5sums=('00000000000000000000000000000000'
+         '00000000000000000000000000000000'
          'SKIP'
          '8cb3304a9c9083fcb3f7a85dd8d77ca7'
          '41cb5fef62715ead2dd109dbea8413d6'
@@ -34,6 +36,9 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+
+  # add upstream patch
+  git apply --whitespace=nowarn ../patch-${pkgver}
 
   git apply ${srcdir}/armbian_build/patch/kernel/$(cat ${srcdir}/armbian_build/patch/kernel/meson64-edge)/*
   git apply ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch
