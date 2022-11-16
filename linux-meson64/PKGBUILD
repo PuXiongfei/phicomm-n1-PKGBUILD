@@ -21,6 +21,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('f91bfe133d2cb1692f705947282e123a'
+         'SKIP'
          '8cb3304a9c9083fcb3f7a85dd8d77ca7'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
