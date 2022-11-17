@@ -7,22 +7,20 @@ pkgbase=linux-meson64
 _srcname=linux-6.0
 _kernelname=${pkgbase#linux}
 _desc="AArch64 meson64"
-pkgver=6.0.8
+pkgver=6.0.y
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc' 'cpio')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
-        'armbian_build::git+https://github.com/armbian/build.git'
+source=("${_srcname}::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#branch=linux-6.0.y"
+        "armbian_build::git+https://github.com/armbian/build.git"
         'meson-gxl-s905d-phicomm-n1-dts.patch'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('d681bd1d62d48049a4874646f6774d92'
-         '30d096c0789849e4c2a7f86c729bb070'
+md5sums=('SKIP'
          'SKIP'
          '8cb3304a9c9083fcb3f7a85dd8d77ca7'
          '41cb5fef62715ead2dd109dbea8413d6'
