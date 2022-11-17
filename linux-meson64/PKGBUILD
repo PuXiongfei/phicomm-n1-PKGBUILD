@@ -42,8 +42,10 @@ prepare() {
 
   for f in `find ${srcdir}/armbian_build/patch/kernel/meson64-edge -type f`
   do
+      echo "apply patch file: $f"
       patch --batch --silent -p1 -N < $f
   done
+  echo "apply patch file: ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch"
   patch --batch --silent -p1 -N -i ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch
 
   cat ${srcdir}/armbian_build/config/kernel/linux-meson64-edge.config > ./.config
