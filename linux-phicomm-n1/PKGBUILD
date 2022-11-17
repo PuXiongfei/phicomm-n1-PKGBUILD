@@ -41,7 +41,7 @@ prepare() {
   git apply --whitespace=nowarn ../patch-${pkgver}
 
   echo "apply patch file: ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch"
-  patch --batch --silent -p1 -N -i ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch
+  patch --batch --silent -p1 -N < ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch
 
   cat "${srcdir}/config" > ./.config
 }
