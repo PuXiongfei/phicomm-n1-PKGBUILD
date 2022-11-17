@@ -21,8 +21,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('00000000000000000000000000000000'
-         '00000000000000000000000000000000'
+md5sums=('d681bd1d62d48049a4874646f6774d92'
+         '30d096c0789849e4c2a7f86c729bb070'
          'SKIP'
          '8cb3304a9c9083fcb3f7a85dd8d77ca7'
          '41cb5fef62715ead2dd109dbea8413d6'
