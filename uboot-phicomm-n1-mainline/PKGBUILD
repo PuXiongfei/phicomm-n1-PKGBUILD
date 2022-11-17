@@ -31,7 +31,7 @@ md5sums=('cb1f3774f5e423b91cff379101c764a3'
 prepare() {
   cd u-boot-${pkgver/rc/-rc}
 
-  echo "apply patch file: ${srcdir}/meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch"
+  echo "Processing file ${srcdir}/meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch"
   patch --batch --silent -p1 -N < ${srcdir}/meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch
 }
 

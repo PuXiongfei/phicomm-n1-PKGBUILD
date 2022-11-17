@@ -40,12 +40,14 @@ prepare() {
   # add upstream patch
   git apply --whitespace=nowarn ../patch-${pkgver}
 
-  for f in `find ${srcdir}/armbian_build/patch/kernel/meson64-edge -type f`
+  for f in `find ${srcdir}/armbian_build/patch/kernel/meson64-edge/ -type f | LC_ALL=C sort -u`
   do
-      echo "apply patch file: $f"
+      # detect and remove files which patch will create
+      lsdiff -s --strip=1 "$f" | grep '^+' | awk '{print $2}' | xargs -I % sh -c 'rm -f %'
+      echo "Processing file $f"
       patch --batch --silent -p1 -N < $f
   done
-  echo "apply patch file: ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch"
+  echo "Processing file ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch"
   patch --batch --silent -p1 -N < ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch
 
   cat ${srcdir}/armbian_build/config/kernel/linux-meson64-edge.config > ./.config
