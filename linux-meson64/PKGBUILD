@@ -12,31 +12,29 @@ pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc' 'cpio')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc' 'cpio' 'patchutils')
 options=('!strip')
-source=("${_srcname}::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#branch=linux-6.0.y"
-        "armbian_build::git+https://github.com/armbian/build.git"
-        'meson-gxl-s905d-phicomm-n1-dts.patch'
+source=('meson-gxl-s905d-phicomm-n1-dts.patch'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('SKIP'
-         'SKIP'
-         '8cb3304a9c9083fcb3f7a85dd8d77ca7'
+md5sums=('8cb3304a9c9083fcb3f7a85dd8d77ca7'
          '41cb5fef62715ead2dd109dbea8413d6'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '3dc88030a8f2f5a5f97266d99b149f77')
 
 prepare() {
+  rm -rf $_srcname
+  git clone -b linux-6.0.y --depth=1 git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git $_srcname
+  rm -rf armbian_build
+  git clone --depth=1 https://github.com/armbian/build.git armbian_build
+
   cd $_srcname
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-
-  # add upstream patch
-  git apply --whitespace=nowarn ../patch-${pkgver}
 
   for f in `find ${srcdir}/armbian_build/patch/kernel/meson64-edge/ -type f | LC_ALL=C sort -u`
   do
