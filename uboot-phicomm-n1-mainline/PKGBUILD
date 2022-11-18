@@ -31,8 +31,13 @@ md5sums=('cb1f3774f5e423b91cff379101c764a3'
 prepare() {
   cd u-boot-${pkgver/rc/-rc}
 
-  echo "Processing file ${srcdir}/meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch"
-  patch --batch --silent -p1 -N < ${srcdir}/meson-gxl-s905d-phicomm-n1-u-boot-${pkgver}.patch
+  for patch in `find ${srcdir}/*.patch | LC_ALL=C sort -u`
+  do
+      # detect and remove files which patch will create
+      lsdiff -s --strip=1 "${patch}" | grep '^+' | awk '{print $2}' | xargs -I % sh -c 'rm -f %'
+      echo "Processing file $patch"
+      patch --batch --silent -p1 -N < "${patch}"
+  done
 }
 
 build() {
