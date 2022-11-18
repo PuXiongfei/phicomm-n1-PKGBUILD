@@ -44,7 +44,7 @@ prepare() {
   do
       # detect and remove files which patch will create
       lsdiff -s --strip=1 "${patch}" | grep '^+' | awk '{print $2}' | xargs -I % sh -c 'rm -f %'
-      echo "Processing file $f"
+      echo "Processing file $patch"
       patch --batch --silent -p1 -N < "${patch}"
   done
   echo "Processing file ${srcdir}/meson-gxl-s905d-phicomm-n1-dts.patch"
