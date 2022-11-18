@@ -1,1 +1,1 @@
-extraargs="loglevel=1 splash=verbose"
+extraargs=""
