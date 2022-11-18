@@ -12,7 +12,7 @@ pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc' 'patchutils')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
